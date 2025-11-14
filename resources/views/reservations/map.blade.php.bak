@@ -1,0 +1,153 @@
+@extends('layouts.app')
+
+@section('title', 'Mapa de Mesas')
+
+@section('styles')
+<style>
+    .floor-plan {
+        position: relative;
+        width: 100%;
+        height: 700px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border: 3px solid #333;
+        border-radius: 8px;
+        overflow: auto;
+        margin-bottom: 20px;
+    }
+
+    .table-item {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background-color: #28a745;
+        border: 3px solid #1e7e34;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        user-select: none;
+    }
+
+    .table-item:hover {
+        transform: scale(1.15);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .table-item:active {
+        transform: scale(0.95);
+    }
+
+    .table-item.reserved {
+        background-color: #dc3545;
+        border-color: #c82333;
+    }
+
+    .legend {
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+    }
+
+    .legend-item {
+        display: inline-block;
+        margin-right: 30px;
+    }
+
+    .legend-color {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+</style>
+@endsection
+
+@section('content')
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>🗺️ Mapa de Mesas</h1>
+        <p class="text-muted">Clique em uma mesa para ver horários disponíveis e fazer uma reserva</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="floor-plan" id="floorPlan">
+            @foreach ($tables as $table)
+                <div class="table-item" 
+                     style="left: {{ $table->position_x }}px; top: {{ $table->position_y }}px;" 
+                     data-table-id="{{ $table->id }}"
+                     data-table-number="{{ $table->number }}"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#scheduleModal"
+                     onclick="loadTableSchedule({{ $table->id }}, {{ $table->number }})">
+                    {{ $table->number }}
+                </div>
+            @endforeach
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #28a745;"></span>
+                <span>Disponível</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #dc3545;"></span>
+                <span>Reservado</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Horários -->
+<div class="modal fade" id="scheduleModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">
+                    Horários - Mesa <strong id="tableNumber"></strong>
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="scheduleContent">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script>
+    function loadTableSchedule(tableId, tableNumber) {
+        document.getElementById('tableNumber').textContent = tableNumber;
+        
+        fetch(`/mesas/${tableId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar horários');
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('scheduleContent').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                document.getElementById('scheduleContent').innerHTML = 
+                    '<div class="alert alert-danger">Erro ao carregar horários. Tente novamente.</div>';
+            });
+    }
+</script>
+@endsection
