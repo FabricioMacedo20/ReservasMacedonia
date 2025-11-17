@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Modelo Reservation - representa uma reserva feita por um cliente.
+// Conecta mesa e time_slot. Armazena nome, CPF, telefone e status.
 class Reservation extends Model
 {
     use HasFactory;

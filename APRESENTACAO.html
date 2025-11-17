@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Mesas - Apresentação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f3460; /* Azul único */
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            background: #0f3460;
+            animation: slideIn 0.5s ease-in-out;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid rgba(255,255,255,0.3);
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 1.8em;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tech-box {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4a9eff;
+        }
+
+        .tech-box strong {
+            color: #4a9eff;
+            font-size: 1.1em;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            padding: 12px 24px;
+            font-size: 1em;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: #fff;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 1.2em;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+        
+        .feature-list {
+            background: rgba(0,0,0,0.15);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .code-box {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        /* Fundo uniforme - cor azul aplicada a todos os slides */
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Título -->
+        <div class="slide active">
+            <h1>Sistema de Reservas de Mesas</h1>
+            <h1> Macedônia</h1>
+            <p class="subtitle">Uma solução web completa para gerenciamento de reservas</p>
+            <p style="margin-top: 60px; font-size: 1.5em; opacity: 0.9;">
+                Desenvolvido com <strong>Laravel 12</strong> | <strong>PHP 8.2</strong> | <strong>Bootstrap 5</strong>
+            </p>
+        </div>
+        
+        <!-- Slide 2: Objetivo -->
+        <div class="slide">
+            <h2>Objetivo do Projeto</h2>
+            <div class="feature-list">
+                <h3>Criar uma aplicação web que permite:</h3>
+                <ul>
+                    <li><strong>Visualizar 80 mesas</strong> em um mapa interativo</li>
+                    <li><strong>Consultar horários disponíveis</strong> para cada mesa</li>
+                    <li><strong>Fazer reservas</strong> com nome, CPF e telefone</li>
+                    <li><strong>Gerenciar ocupação</strong> em tempo real com barra de progresso</li>
+                    <li><strong>Cancelar reservas</strong> quando necessário</li>
+                    <li><strong>Visualizar histórico</strong> de todas as reservas</li>
+                        <p>Restaurante Macedônia — Sistema de Reservas</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Tecnologias -->
+        <div class="slide">
+            <h2>Tecnologias Utilizadas</h2>
+            <div class="tech-grid">
+                <div class="tech-box">
+                                <li>Visualizar mesas em um mapa interativo</li>
+                                <li>Consultar horários disponíveis para cada mesa</li>
+                                <li>Fazer reservas com nome, CPF e telefone</li>
+                                <li>Gerenciar ocupação em tempo real</li>
+                                <li>Cancelar reservas quando necessário</li>
+                                <li>Visualizar histórico de reservas</li>
+                <div class="tech-box">
+                    <strong>Frontend:</strong><br>
+                    • Blade Templates<br>
+                    • Bootstrap 5.3<br>
+                    • JavaScript Vanilla<br>
+                    • CSS Grid
+                </div>
+                <div class="tech-box">
+                    <strong>Arquitetura:</strong><br>
+                    • MVC<br>
+                    • Service Pattern<br>
+                    • RESTful API<br>
+                    • Model Binding
+                </div>
+                <div class="tech-box">
+                    <strong>Banco de Dados:</strong><br>
+                    • 4 Tabelas (tables, time_slots, reservations, sessions)<br>
+                    • 80 Mesas geradas pelo seeder<br>
+                    • Estrutura gerida por Migrations e Seeders<br>
+                    • Relacionamentos (chaves FK: table_id, time_slot_id)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Arquitetura -->
+        <div class="slide">
+            <h2>Arquitetura do Sistema</h2>
+            <div class="feature-list">
+                <h3>Resumo prático por pasta:</h3>
+                <ul>
+                    <li><strong>Routes (routes/web.php):</strong> Define endpoints públicos e AJAX (/mapa, /mesas/{id}, /reservas). Mantém rotas RESTful e agrupamentos simples.</li>
+                    <li><strong>Controllers (app/Http/Controllers):</strong> Recebem requisições, validam dados mínimos e delegam ao Service. Ex.: <em>TableController</em> (list/show) e <em>ReservationController</em> (store/destroy).</li>
+                    <li><strong>Services (app/Services):</strong> <em>ReservationService</em> centraliza a lógica de reserva: valida CPF, checa disponibilidade, cria reserva e atualiza ocupação. Facilita testes e reuso.</li>
+                    <li><strong>Models (app/Models):</strong> <em>Table, TimeSlot, Reservation</em> — definem relacionamentos Eloquent (hasMany, belongsTo) e métodos auxiliares (ex.: occupancy_percentage).</li>
+                    <li><strong>Database (database/migrations & seeders):</strong> Migrations criam as 4 tabelas; Seeders populam 80 mesas e geram os horários iniciais. Use <code>php artisan migrate:fresh --seed</code> para reproduzir ambiente.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Funcionalidades -->
+        <div class="slide">
+            <h2>Funcionalidades Principais</h2>
+            <div class="feature-list">
+                <h3>Mapa de Mesas Interativo</h3>
+                <p>80 círculos verdes (disponível) com barra vermelha indicando ocupação em tempo real</p>
+                
+                <h3>Seleção de Horários</h3>
+                <p>Ao clicar em uma mesa, modal exibe 6 dias com horários disponíveis e reservados</p>
+                
+                <h3>Formulário de Reserva</h3>
+                <p>Cadastro com Nome, CPF (11 dígitos) e Telefone validados</p>
+                
+                <h3>Barra de Progresso</h3>
+                <p>Cada mesa mostra percentual de ocupação visualmente preenchido de baixo para cima</p>
+                
+                <h3>Gerenciamento de Reservas</h3>
+                <p>Listar, visualizar detalhes e cancelar reservas com confirmação</p>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Resultados -->
+        <div class="slide">
+            <h2>Resultados & Conclusão</h2>
+            <div class="feature-list">
+                <h3>Estatísticas:</h3>
+                <ul>
+                    <li>80 mesas gerenciadas</li>
+                    <li>Horários gerados automaticamente pelos seeders (6 dias de operação)</li>
+                    <li>Suporte para múltiplas reservas simultâneas</li>
+                    <li>Interface responsiva e intuitiva</li>
+                </ul>
+                
+                <h3> Proximos passos para possiveis melhorias:</h3>
+                <ul>
+                    <li>Sistema de notificações por email</li>
+                    <li>Dashboard administrativo</li>
+                    <li>Integração com pagamento online</li>
+                    <li>App mobile nativa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+                                <li>Horários gerados automaticamente pelos seeders</li>
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">6</span>
+    </div>
+    
+    <div class="controls">
+        <button onclick="previousSlide()">← Anterior</button>
+        <button onclick="nextSlide()">Próximo →</button>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Navegação com setas do teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+    </script>
+</body>
+</html>

@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Cria a tabela `time_slots` com horários disponíveis por mesa.
+// Usada para armazenar dia, horário de início/fim e disponibilidade.
+
 return new class extends Migration
 {
     public function up(): void

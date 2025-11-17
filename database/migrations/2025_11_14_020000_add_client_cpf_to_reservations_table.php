@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Adiciona a coluna `client_cpf` na tabela `reservations`.
+// Serve para armazenar o CPF do cliente (validação: 11 dígitos).
+
 return new class extends Migration
 {
     /**

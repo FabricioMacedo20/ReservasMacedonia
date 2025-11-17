@@ -6,6 +6,9 @@ use App\Models\Table;
 use App\Models\TimeSlot;
 use Illuminate\Database\Seeder;
 
+// Seeder que cria as 80 mesas e popula os time slots iniciais.
+// Executado para gerar dados de teste (mesas + horários).
+
 class TableSeeder extends Seeder
 {
     public function run(): void

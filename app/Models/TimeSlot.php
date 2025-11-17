@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Modelo TimeSlot - representa um horário disponível para uma mesa.
+// Armazena dia, hora início/fim, disponibilidade. Criado pelo seeder.
 class TimeSlot extends Model
 {
     use HasFactory;

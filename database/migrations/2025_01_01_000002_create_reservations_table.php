@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Cria a tabela `reservations` que armazena reservas feitas pelos clientes.
+// Contém referências para mesa e time_slot, dados do cliente e status.
+
 return new class extends Migration
 {
     public function up(): void

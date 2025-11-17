@@ -5,6 +5,9 @@ namespace Database\Factories;
 use App\Models\Reservation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// Factory para gerar reservas falsas em testes.
+// Retorna dados básicos para popular a tabela `reservations`.
+
 class ReservationFactory extends Factory
 {
     protected $model = Reservation::class;

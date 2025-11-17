@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// Modelo Table - representa uma mesa do restaurante.
+// Atributos: número, capacidade, posição. Relacionamentos com TimeSlot e Reservation.
 class Table extends Model
 {
     use HasFactory;
