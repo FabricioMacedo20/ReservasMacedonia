@@ -53,7 +53,7 @@ class ReservationService
         return $timeSlots;
     }
 
-    // getTimesForDay(day) - gera lista de horas para o dia informado
+    // gera lista de horas para o dia informado
     public function getTimesForDay(string $day): array
     {
         $times = [];

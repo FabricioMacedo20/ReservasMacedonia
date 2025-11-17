@@ -1,7 +1,3 @@
-O diretório /reservas-restaurante/reservas-restaurante/app/Exceptions deve conter as exceções personalizadas que podem ser utilizadas em todo o projeto. Aqui está o conteúdo sugerido para o arquivo:
-
-/reservas-restaurante/reservas-restaurante/app/Exceptions/Handler.php
-
 <?php
 
 namespace App\Exceptions;
@@ -9,22 +5,27 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+// Handler - gerencia exceções e erros da aplicação
 class Handler extends ExceptionHandler
 {
+    // Lista de exceções que não devem ser reportadas
     protected $dontReport = [
-        // Lista de exceções que não devem ser reportadas
+        // Adicionar exceções conforme necessário
     ];
 
+    // Dados que não devem ser flasheados
     protected $dontFlash = [
         'password',
         'password_confirmation',
     ];
 
+    // Reporta a exceção
     public function report(Exception $exception)
     {
         parent::report($exception);
     }
 
+    // Renderiza a exceção
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
